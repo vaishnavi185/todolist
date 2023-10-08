@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <style>
+        
+        
+    </style>
+</head>
+<body style="background-color: #D5B6DD;">
+    <section class="box">
+        <br><br>
+        <div class="row">
+            <div class="column">
+                <div class="icon"></div>
+            </div>
+            <div class="column">
+                <div class="text"></div>
+            </div>
+        </div>
+        <br><br>
+        <div class="input-and-button">
+            <input type="text" id="myText" placeholder="">
+            <button class="button" onclick="addTask()">Submit</button>
+        </div>
+       
+           <ul class="task-list"></ul> 
+        
+    </section>
+
+    <script>
+        function addTask() {
+            var taskText = document.getElementById("myText").value;
+
+            var taskElement = document.createElement("div");
+            taskElement.textContent = taskText;
+            taskElement.classList.add("task-item"); 
+
+            var taskList = document.querySelector(".task-list");
+            taskList.appendChild(taskElement);
+
+           
+            taskElement.addEventListener("click", function () {
+                
+                this.classList.toggle("completed");
+                
+                if (this.classList.contains("completed")) {
+                    var completedTask = this;
+                    setTimeout(function () {
+                        completedTask.remove();
+                    }, 2000); 
+                }
+            });
+
+            document.getElementById("myText").value = "";
+        }
+    </script>
+</body>
+</html>
